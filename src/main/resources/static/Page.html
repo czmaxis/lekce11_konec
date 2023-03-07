@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>konzultace konec</title>
+</head>
+<script>
+function init(){
+
+}
+
+
+
+        function test(){
+
+            console.log(111, "volani test");
+
+            // document.getElementById("button-test").addEventListener("click",()=>{
+            //     test();
+            // })
+
+            const result = [
+                {id: 1, name:'ABC', value: 123},
+                {id: 2, name:'XYZ', value: 234},
+                {id: 3, name:'IJK', value: 45},
+            ]
+
+            document.getElementById("resultBox").innerHTML = '';
+
+            result.forEach((item) => {
+
+
+                const lineDiv = document.createElement('div');
+                lineDiv.id = "line-div-"+item.id;
+
+                const itemTextarea = document.createElement('textarea');
+                itemTextarea.value = item.id;
+
+                const nameTextarea = document.createElement('textarea');
+                nameTextarea.value = item.name;
+
+                const valueTextarea = document.createElement('textarea');
+                valueTextarea.value = item.value;
+
+                const buttonDelete = document.createElement('button');
+                buttonDelete.innerText  = 'DELETE';
+                buttonDelete.setAttribute('data-id', item.id);
+
+
+                // buttonDelete.addEventListener("click", function(event){
+                //     console.log(111, event.target);
+                //     const lineDiv2 = document.getElementById('line-div-'+event.target.getAttribute('data-id'))
+                //     lineDiv2.remove();
+                // })
+
+                buttonDelete.addEventListener("click", (event) => {
+                    console.log(111, event.target);
+                    const lineDiv2 = document.getElementById('line-div-'+event.target.getAttribute('data-id'))
+                    lineDiv2.remove();
+                })
+
+
+                lineDiv.appendChild(itemTextarea);
+                lineDiv.appendChild(nameTextarea);
+                lineDiv.appendChild(valueTextarea);
+                lineDiv.appendChild(buttonDelete);
+
+                document.getElementById("resultBox").appendChild(lineDiv);
+
+                // document.getElementById("item-id").value = item.id;
+                // document.getElementById("item-name").value = item.name;
+                // document.getElementById("item-value").value = item.value;
+            })
+
+        }
+</script>
+<body onload = "init()">
+<button onclick = "test()">TEST</button>
+
+<div id="resultBox">
+    ID:<textarea id="item-id"></textarea>
+       NAME: <textarea id="item-name"></textarea>
+            VALUE:<textarea id="item-value"></textarea>
+
+</div>
+</body>
+</html>
